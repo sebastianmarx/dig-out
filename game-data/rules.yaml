@@ -1,0 +1,23 @@
+# General rule values of the base game.
+actions_per_turn: 2
+cautious_move_cost: 2
+start_hand: 3
+hand_limit: 10
+max_beatings: 2
+prepared_weapon_max: 1
+
+# Tunnel points needed to win, by player count.
+win_points: {2: 12, 3: 12, 4: 10, 5: 8, 6: 8}
+
+# Crafting (not in places with craft_allowed: false, not with beatings).
+recipes:
+  - {id: pickaxe, needs: {link: 2, pike: 1}, gives: pickaxe, amount: 1}
+  - {id: shovel, needs: {link: 2, container: 1}, gives: shovel, amount: 1}
+  - {id: knives, needs: {link: 2, blade: 1}, gives: knife, amount: 2}
+
+# Recreation area market (cigarettes). The cartel pays 1 less (min. 1).
+market:
+  - {id: knife, gives: knife, amount: 1, cost: 2}
+  - {id: knife_pair, gives: knife, amount: 2, cost: 5}
+  - {id: pickaxe, gives: pickaxe, amount: 1, cost: 6}
+  - {id: shovel, gives: shovel, amount: 1, cost: 8}

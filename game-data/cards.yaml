@@ -1,0 +1,59 @@
+# Card definitions. `count` = copies in the game. `value` = cigarettes when sold.
+# kind: material | weapon | accessory | tool | action | valuable | gadget
+
+# The face-down search deck (77 cards).
+search_deck:
+  # Materials
+  - {id: container, name: Behälter, kind: material, material: container, count: 5, value: 1}
+  - {id: pike, name: Spitze, kind: material, material: pike, count: 6, value: 1}
+  - {id: link, name: Kettenglied, kind: material, material: link, count: 14, value: 1}
+  # Weapons (blades are also a crafting ingredient)
+  - {id: blade, name: Klinge, kind: weapon, material: blade, count: 10, value: 2}
+  # Accessories (gang membership)
+  - {id: cap, name: Kappe, kind: accessory, accessory: cap, count: 3, value: 1}
+  - {id: bandana, name: Bandana, kind: accessory, accessory: bandana, count: 3, value: 1}
+  - {id: necklace, name: Halskette, kind: accessory, accessory: necklace, count: 3, value: 1}
+  - {id: watch, name: Uhr, kind: accessory, accessory: watch, count: 3, value: 1}
+  - {id: boots, name: Stiefel, kind: accessory, accessory: boots, count: 3, value: 1}
+  - {id: ring, name: Ring, kind: accessory, accessory: ring, count: 3, value: 1}
+  # Rare items
+  - {id: gold_tooth, name: Goldzahn, kind: valuable, rare: true, count: 1, value: 5,
+     text: Nur Handelsware.}
+  - {id: universal_handle, name: Universalgriff, kind: material, rare: true, count: 1, value: 3,
+     counts_as_any: [pike, container],
+     text: Zählt beim Herstellen als Spitze oder Behälter.}
+  - {id: steel_wire, name: Stahldraht, kind: material, rare: true, count: 1, value: 3,
+     counts_as: {link: 2},
+     text: Zählt beim Herstellen als 2 Kettenglieder.}
+  - {id: phone, name: Schmuggel-Handy, kind: gadget, rare: true, count: 1, value: 4, effect: phone_swap,
+     text: "Aktion: Sieh dir die Hand eines Spielers an und tausche 1 deiner Karten gegen 1 seiner. Das Handy bleibt auf deiner Hand."}
+  - {id: fake_id, name: Gefälschter Ausweis, kind: accessory, rare: true, accessory: any, count: 1, value: 3,
+     text: Zählt als beliebiges Accessoire.}
+  - {id: shiv, name: Zahnbürsten-Shiv, kind: weapon, rare: true, count: 1, value: 3, extra_beatings: 1,
+     text: "Gewinnst du einen Kampf mit dieser Waffe als letzter, bekommt der Verlierer 2 Prügel statt 1."}
+  # Action cards (9 types x 2)
+  - {id: shift_change, name: Schichtwechsel, kind: action, count: 2, value: 1, effect: extra_actions,
+     amount: 2, text: +2 Aktionen in diesem Zug.}
+  - {id: shortcut, name: Schleichweg, kind: action, count: 2, value: 1, effect: move_anywhere,
+     text: Bewege dich auf einen beliebigen Ort.}
+  - {id: package, name: Paket von draußen, kind: action, count: 2, value: 1, effect: draw, amount: 3,
+     text: Ziehe 3 Suchkarten (zählt nicht als Suchen).}
+  - {id: raid, name: Razzia, kind: action, count: 2, value: 1, effect: raid,
+     text: Alle anderen Spieler an deinem Ort werfen je 1 Karte ihrer Wahl ab.}
+  - {id: bribe_money, name: Schmiergeld, kind: action, count: 2, value: 1, effect: buy_pickaxe, amount: 3,
+     text: Zahle 3 Zigaretten und nimm 1 Spitzhacke vom Stapel.}
+  - {id: distraction, name: Ablenkung, kind: action, count: 2, value: 1, effect: cancel_extortion, reaction: true,
+     text: "Reaktion: Wenn du erpresst wirst, wird die Erpressung abgebrochen."}
+  - {id: first_aid, name: Erste Hilfe, kind: action, count: 2, value: 1, effect: heal, amount: 1,
+     text: Entferne 1 Prügel.}
+  - {id: snitch, name: Spitzel, kind: action, count: 2, value: 1, effect: snitch,
+     text: "Sieh dir die Hand eines Spielers an und nimm 1 Karte (keine Waffe, kein Werkzeug)."}
+  - {id: cave_in, name: Tunneleinbruch, kind: action, count: 2, value: 1, effect: cave_in,
+     text: Ein Spieler deiner Wahl verliert seinen zuletzt eingegrabenen Löffel (-1 Punkt).}
+
+# Open piles on the board (top of pile = last element).
+board_piles:
+  - {id: spoon, name: Löffel, kind: tool, points: 1, count: 11, value: 1}
+  - {id: pickaxe, name: Spitzhacke, kind: tool, points: 2, count: 11, value: 3}
+  - {id: shovel, name: Schaufel, kind: tool, points: 3, count: 11, value: 4}
+  - {id: knife, name: Messer, kind: weapon, count: 20, value: 1}

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+# Node
+node_modules/
+dist/
+# Terraform
+.terraform/
+*.tfstate*
+# Blender backups / scratch
+*.blend1
+art/renders/debug.*
+# OS
+.DS_Store
+Thumbs.db
+
+# Deploy build output
+build/

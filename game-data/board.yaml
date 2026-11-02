@@ -1,0 +1,43 @@
+# Places of the base board, in ring order (index 1..6 = die faces).
+# A simple move rolls the die: face n offers place n or place n+1 (6 -> 6 or 1).
+places:
+  - id: cellblock
+    name: Zellentrakt
+    search: 1
+    actions: [dig]
+    craft_allowed: false
+  - id: cafeteria
+    name: Cafeteria
+    search: 2
+    actions: [steal_spoon]
+    craft_allowed: true
+  - id: showers
+    name: Duschen
+    search: 3
+    actions: []
+    craft_allowed: false
+  - id: infirmary
+    name: Krankenstation
+    search: 1
+    actions: [heal]
+    craft_allowed: true
+  - id: recreation
+    name: Freizeitbereich
+    search: 2
+    actions: [sell, buy]
+    craft_allowed: true
+  - id: yard
+    name: Hof
+    search: 2
+    actions: [train]
+    craft_allowed: true
+
+start_place: cellblock
+
+dice:
+  1: [cellblock, cafeteria]
+  2: [cafeteria, showers]
+  3: [showers, infirmary]
+  4: [infirmary, recreation]
+  5: [recreation, yard]
+  6: [yard, cellblock]

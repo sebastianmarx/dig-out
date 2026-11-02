@@ -1,0 +1,4 @@
+# Large binary art sources via Git LFS
+*.blend filter=lfs diff=lfs merge=lfs -text
+art/vendor/** filter=lfs diff=lfs merge=lfs -text
+art/renders/*.png filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,52 @@
+# Asset groups: which raw renders (art/renders/*.png) become which web assets.
+# width = display width in CSS px at @1x; postprocess.mjs writes @1x/@2x/@3x WebP
+# (never upscaling beyond the source). Files matching no group are not shipped
+# (previews, archive_*, overview_*).
+
+output: ../frontend/public/assets
+budget_kb: 8192          # total size of all generated files
+quality: 82              # WebP quality
+
+groups:
+  - pattern: '^place\.[a-z]+\.png$'
+    dir: places
+    width: 320
+  - pattern: '^char\.\d+\.standee\.png$'
+    dir: characters
+    width: 128
+  - pattern: '^char\.\d+\.portrait\.png$'
+    dir: characters
+    width: 96
+  - pattern: '^char\.\d+\.pose\.[a-z]+\.png$'
+    dir: characters
+    width: 256
+  - pattern: '^(item|weapon|acc|rare|tool|action)\.[a-z_0-9]+\.png$'
+    dir: cards
+    width: 160
+  - pattern: '^token\.[a-z0-9]+\.png$'
+    dir: tokens
+    width: 64
+  - pattern: '^dice\.face\d\.png$'
+    dir: dice
+    width: 64
+  - pattern: '^tunnel\.stage\d\.png$'
+    dir: tunnel
+    width: 256
+  - pattern: '^brand\.logo\.png$'
+    dir: brand
+    width: 400
+  - pattern: '^board\.png$'
+    dir: board
+    width: 1000
+  - pattern: '^gang\.[a-z]+\.png$'
+    dir: gangs
+    width: 64
+
+# Copied as-is (data the frontend needs next to the images).
+copy:
+  - {from: board.layout.json, to: board/board.layout.json}
+
+# Browser / app icons from the SVG master, relative to art/.
+icons:
+  source: brand/app-icon.svg
+  sizes: [512, 192, 180, 48, 32, 16]

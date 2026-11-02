@@ -1,0 +1,46 @@
+# One hidden background per player, revealed once per game (free, no action).
+# timing: own_turn  - reveal any time during your turn (RevealBackground)
+#         on_dig    - reveal as part of a Dig action
+#         on_craft  - reveal as part of a Craft action
+#         on_roll   - reveal as part of a simple move (choose the die result)
+#         on_extorted - reveal as a reaction when you are extorted
+#         on_beaten - reveal as a reaction when you would receive beatings
+#         in_combat - reveal on your turn in a combat instead of playing a weapon
+# amount / gang_amount: effect strength without / with membership in `gang`.
+backgrounds:
+  - {id: ex_miner, name: Ex-Bergarbeiter, gang: crew, timing: on_dig, effect: dig_bonus, amount: 1, gang_amount: 2,
+     text: "Beim Graben: +1 Punkt (Crew: +2)."}
+  - {id: pickpocket, name: Taschendieb, gang: crew, timing: own_turn, effect: pickpocket, amount: 2,
+     text: "Ziehe 2 zufällige Karten von einem Spieler an deinem Ort (Crew: von jedem Spieler an deinem Ort 1)."}
+  - {id: hoarder, name: Hamsterer, gang: crew, timing: own_turn, effect: hoard, amount: 4, gang_amount: 12,
+     text: "Ziehe 4 Suchkarten (Crew: zusätzlich Handlimit dauerhaft 12)."}
+  - {id: accountant, name: Buchhalter, gang: cartel, timing: own_turn, place: recreation, effect: gain_cigarettes,
+     amount: 6, gang_amount: 10, text: "Im Freizeitbereich: Erhalte 6 Zigaretten (Kartell: 10)."}
+  - {id: smuggler, name: Schmuggler, gang: cartel, timing: own_turn, effect: smuggle_shovel, amount: 3, gang_amount: 0,
+     text: "Nimm 1 Schaufel vom Stapel und wirf 3 Karten ab (Kartell: ohne Abwerfen)."}
+  - {id: briber, name: Bestecher, gang: cartel, timing: on_extorted, effect: bribe_guard,
+     text: "Wenn du erpresst wirst: Die Erpressung wird abgebrochen, der Angreifer bekommt 1 Prügel (Kartell: zusätzlich ziehst du 1 zufällige Karte von ihm)."}
+  - {id: mechanic, name: Mechaniker, gang: bikers, timing: on_craft, effect: craft_discount, amount: 1, gang_amount: 2,
+     text: "Beim Herstellen: Ignoriere 1 Zutat (Biker: 2)."}
+  - {id: brawler, name: Raufbold, gang: bikers, timing: in_combat, effect: brawl, amount: 2, gang_amount: 3,
+     text: "Im Kampf statt einer Waffe: zählt als 2 gespielte Waffen (Biker: 3)."}
+  - {id: tough, name: Zäh wie Leder, gang: bikers, timing: on_beaten, effect: ignore_beating,
+     text: "Wenn du Prügel bekommst: Ignoriere sie (Biker: zusätzlich 1 Prügel heilen)."}
+  - {id: enforcer, name: Vollstrecker, gang: bratva, timing: own_turn, effect: give_beating, amount: 1, gang_amount: 2,
+     text: "Gib einem Spieler an deinem Ort 1 Prügel (Bratva: 2)."}
+  - {id: debt_collector, name: Geldeintreiber, gang: bratva, timing: own_turn, effect: collect, amount: 1, gang_amount: 2,
+     text: "Jeder andere Spieler gibt dir 1 Zigarette, falls vorhanden (Bratva: 2)."}
+  - {id: arms_dealer, name: Waffenhändler, gang: bratva, timing: own_turn, effect: take_knives, amount: 3, gang_amount: 5,
+     text: "Nimm 3 Messer vom Stapel (Bratva: 5)."}
+  - {id: acrobat, name: Akrobat, gang: triad, timing: own_turn, effect: free_move,
+     text: "Ziehe auf einen beliebigen Ort (Triade: zusätzlich +1 Aktion)."}
+  - {id: master_thief, name: Meisterdieb, gang: triad, timing: own_turn, place: cellblock, effect: steal_tunnel_tool,
+     text: "Im Zellentrakt: Nimm einem Spieler einen eingegrabenen Löffel weg und grabe ihn selbst ein (Triade: Spitzhacke statt Löffel)."}
+  - {id: gambler, name: Glücksspieler, gang: triad, timing: on_roll, effect: fix_roll,
+     text: "Bei einer einfachen Bewegung: Bestimme das Würfelergebnis selbst (Triade: zusätzlich 1 Karte ziehen)."}
+  - {id: informant, name: Informant, gang: shadow, timing: own_turn, effect: see_all_hands,
+     text: "Sieh dir alle Hände an (Schatten: nimm 1 Karte aus einer davon)."}
+  - {id: phantom, name: Phantom, gang: shadow, timing: own_turn, effect: untouchable,
+     text: "Bis zu deinem nächsten Zug kannst du nicht erpresst werden (Schatten: zusätzlich +1 Aktion)."}
+  - {id: tunnel_rat, name: Tunnelratte, gang: shadow, timing: on_dig, effect: multi_dig, amount: 2, gang_amount: 3,
+     text: "Beim Graben: Grabe bis zu 2 Werkzeuge mit einer Aktion ein (Schatten: 3)."}

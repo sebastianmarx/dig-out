@@ -1,0 +1,13 @@
+{
+  "name": "dig-out-art",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "icons": "node scripts/icons.mjs",
+    "postprocess": "node scripts/postprocess.mjs"
+  },
+  "devDependencies": {
+    "sharp": "0.34.4",
+    "yaml": "2.8.1"
+  }
+}

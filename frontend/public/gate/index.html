@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#14171d" />
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/assets/icons/icon-180.png" />
+    <title>Dig Out</title>
+    <link rel="stylesheet" href="/gate/gate.css" />
+  </head>
+  <body>
+    <main>
+      <img src="/icon.svg" width="80" height="80" alt="" class="brand-icon" />
+      <h1>DIG OUT</h1>
+      <p>Private Plattform – bitte Passwort eingeben.</p>
+      <form id="gate">
+        <input id="password" type="password" autocomplete="current-password" placeholder="Plattform-Passwort" required autofocus />
+        <button type="submit">Weiter</button>
+        <p id="error" role="alert"></p>
+      </form>
+    </main>
+    <script src="/gate/gate.js"></script>
+  </body>
+</html>

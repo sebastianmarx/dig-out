@@ -1,0 +1,39 @@
+# Each gang has 4 membership cards. Joining: discard `distinct` different accessories,
+# all from `from` (or any type when from is "any"). A fake ID counts as any accessory.
+gangs:
+  - id: crew
+    name: Crew
+    cards: 4
+    requires: {from: [cap, bandana, necklace], distinct: 2}
+    ability: search_bonus
+    text: Suchen zieht 1 Karte mehr.
+  - id: cartel
+    name: Kartell
+    cards: 4
+    requires: {from: [cap, watch, boots], distinct: 2}
+    ability: buy_discount
+    text: Kaufen kostet 1 Zigarette weniger (mindestens 1).
+  - id: bikers
+    name: Biker
+    cards: 4
+    requires: {from: [bandana, ring, boots], distinct: 2}
+    ability: defender_skip
+    text: Als Verteidiger darfst du 1× pro Kampf aussetzen, ohne zu verlieren.
+  - id: bratva
+    name: Bratva
+    cards: 4
+    requires: {from: [watch, necklace, ring], distinct: 2}
+    ability: winner_cigarettes
+    text: Gewinnst du einen Kampf, erhältst du 1 Zigarette pro Prügel des Verlierers.
+  - id: triad
+    name: Triade
+    cards: 4
+    requires: {from: any, distinct: 3}
+    ability: reroll
+    text: Einfache Bewegung - 1× pro Zug neu würfeln.
+  - id: shadow
+    name: Schatten
+    cards: 4
+    requires: {from: any, distinct: 3}
+    ability: hidden_hand
+    text: Deine Handkartenanzahl ist verborgen. Spitzel, Handy und Informant sehen bei dir nur 3 zufällige Karten.

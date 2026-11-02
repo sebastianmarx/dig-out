@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <title>Dig Out – Spaten vor einem Gefängnisbogen</title>
+  <defs>
+    <linearGradient id="night" x1="32" y1="16" x2="224" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2a313b"/>
+      <stop offset="1" stop-color="#14171d"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="82" y1="152" x2="142" y2="196" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff2d9"/>
+      <stop offset="1" stop-color="#b7b4aa"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#night)"/>
+  <rect x="8" y="8" width="240" height="240" rx="49" stroke="#3a434f" stroke-width="2"/>
+  <!-- A prison doorway remains readable behind the bright digging tool. -->
+  <path d="M56 199V109a72 72 0 0 1 144 0v90" stroke="#65727e" stroke-width="14" stroke-linecap="round"/>
+  <path d="M92 67v65m36-81v44m36-28v24m24 33h-27M59 124h41" stroke="#65727e" stroke-width="10" stroke-linecap="round"/>
+  <!-- Diagonal D-handle shovel, drawn as a bold silhouette for small favicons. -->
+  <g transform="rotate(38 128 128)">
+    <path d="M128 104v68" stroke="#14171d" stroke-width="28" stroke-linecap="round"/>
+    <path d="M105 57h46v19a23 23 0 0 1-46 0V57Z" fill="#14171d" stroke="#14171d" stroke-width="22" stroke-linejoin="round"/>
+    <path d="M128 102v69" stroke="#ed783a" stroke-width="15" stroke-linecap="round"/>
+    <path d="M105 57h46v19a23 23 0 0 1-46 0V57Z" stroke="#ed783a" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M98 157h60v26c0 23-30 40-30 40s-30-17-30-40v-26Z" fill="url(#metal)" stroke="#14171d" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M128 172v30" stroke="#8d9598" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <path d="m184 185 9 13m-17 11 15 4" stroke="#ed783a" stroke-width="7" stroke-linecap="round"/>
+</svg>

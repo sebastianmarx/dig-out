@@ -1,0 +1,45 @@
+[project]
+name = "digout"
+version = "0.1.0"
+description = "Dig Out – game engine and serverless backend"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic>=2.11",
+    "pyyaml>=6.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "hypothesis>=6.120",
+    "ruff>=0.9",
+    "mypy>=1.15",
+    "types-pyyaml>=6.0",
+    "starlette>=1.10.0",
+    "uvicorn[standard]>=0.54.0",
+    "httpx>=0.28.1",
+    "boto3>=1.43.121",
+    "boto3-stubs>=1.43.121",
+    "moto[dynamodb,ssm]>=5.2.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/digout"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
+plugins = ["pydantic.mypy"]

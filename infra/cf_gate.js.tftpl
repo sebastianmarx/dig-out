@@ -1,0 +1,51 @@
+// CloudFront viewer-request function (cloudfront-js-2.0): platform gate + SPA routing.
+// The cookie '<expiry>.<hex hmac-sha256(key, expiry)>' is issued by POST /api/gate
+// (backend/src/digout/aws/security.py); the key lives in the CloudFront KeyValueStore.
+import cf from 'cloudfront';
+import crypto from 'crypto';
+
+const kvs = cf.kvs('${kvs_id}');
+const OPEN = ['/gate/', '/gate/index.html', '/gate/gate.css', '/gate/gate.js', '/api/gate', '/icon.svg', '/favicon.ico', '/assets/icons/icon-180.png'];
+
+async function handler(event) {
+  const request = event.request;
+  const uri = request.uri === '/gate' ? '/gate/' : request.uri;
+
+  if (OPEN.includes(uri)) {
+    request.uri = uri === '/gate/' ? '/gate/index.html' : uri;
+    return request;
+  }
+
+  const cookie = request.cookies['__Host-gate'];
+  if (!cookie || !(await valid(cookie.value))) {
+    if (uri.startsWith('/api/')) {
+      return { statusCode: 401, statusDescription: 'Unauthorized', headers: { 'cache-control': { value: 'no-store' } } };
+    }
+    return {
+      statusCode: 302,
+      statusDescription: 'Found',
+      headers: { location: { value: '/gate/' }, 'cache-control': { value: 'no-store' } },
+    };
+  }
+
+  // SPA: app routes like /g/<id> have no file extension and serve the app shell.
+  if (!uri.startsWith('/api/') && uri.indexOf('.') === -1) {
+    request.uri = '/index.html';
+  }
+  return request;
+}
+
+async function valid(value) {
+  const dot = value.indexOf('.');
+  if (dot < 1) return false;
+  const expiry = value.substring(0, dot);
+  if (!(parseInt(expiry, 10) > Date.now() / 1000)) return false;
+  let key;
+  try {
+    key = await kvs.get('gate_key');
+  } catch (e) {
+    return false;
+  }
+  const expected = crypto.createHmac('sha256', key).update(expiry).digest('hex');
+  return expected === value.substring(dot + 1);
+}
