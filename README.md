@@ -1,6 +1,7 @@
 # Dig Out
 
 Browser-Umsetzung des Gefängnisausbruch-Brettspiels *Dig Your Way Out* (eigene Karten, eigene Grafiken).
+Website: [dig-out.marxai.de](https://dig-out.marxai.de).
 Gesamtplan: [project.md](project.md) · Spielregeln: [docs/rules.md](docs/rules.md)
 
 | Ordner | Inhalt |
